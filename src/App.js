@@ -19,7 +19,7 @@ function App() {
     setInputData(data);
   }
   return (
-    <div >
+    <div className='font-bdy'>
       <Routes>
         <Route path='/' element={<Home onInputChange={handleInputChange} />} />
         <Route path='/result' element={<Products inputData={inputData} data={data} />} />

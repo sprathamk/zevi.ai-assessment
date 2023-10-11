@@ -12,8 +12,6 @@ function Home({ onInputChange }) {
         onInputChange(query);
         navigate('/result');
     }
-    /*
-                <button className='text-red-900' >Find</button>*/
     return (
         <div className='w-screen h-screen'>
             <img className='absolute w-screen h-screen' src='./images/Background.png' alt='Background' />
