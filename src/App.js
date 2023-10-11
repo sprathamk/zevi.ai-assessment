@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Home from './Pages/Home';
+import Products from './Pages/Products';
+import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
+  const [inputData, setInputData] = useState('');
+
+  const [data, setData] = useState('');
+  useEffect(() => {
+    fetch('https://api.escuelajs.co/api/v1/categories/1/products')
+      .then(res => res.json())
+      .then(json => setData(json))
+  }, []);
+
+  const handleInputChange = (data) => {
+    setInputData(data);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <Routes>
+        <Route path='/' element={<Home onInputChange={handleInputChange} />} />
+        <Route path='/result' element={<Products inputData={inputData} data={data} />} />
+      </Routes>
     </div>
   );
 }
