@@ -10,11 +10,10 @@ function App() {
 
   const [data, setData] = useState('');
   useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/categories/1/products')
+    fetch('https://api.escuelajs.co/api/v1/products')
       .then(res => res.json())
       .then(json => setData(json))
   }, []);
-
   const handleInputChange = (data) => {
     setInputData(data);
   }
